@@ -1,0 +1,3 @@
+INST_APACHE_BEGIN
+If apache ist stopped, then start with /etc/init.d/http start
+INST_APACHE_END

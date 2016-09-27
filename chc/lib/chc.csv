@@ -1,0 +1,10 @@
+#SERVER;CHECK_TYPE(PS/CMD);DESC;CHECK_CMD;COUNT_MIN;COUNT_MAX;OK_MSG;ERR_MSG;REPAIR_CMD;INST_MSG;
+#example1:LOCALHOST;PS;Apache-HTTP;sudo systemctl status httpd|grep 'active (running)'|wc -l;1;1;RUNNING;STOPPED;sudo /etc/init.d/httpd start;INST_APACHE;
+#example2:192.168.1.100;PS;Website check;curl -s example.com|egrep 'Password|Username'|wc -l;2;2;OK;NOT REACHABLE;;;
+atomVPS;DESC;;;;;;
+#LOCALHOST;CMD;system uptime;uptime;;;;;;;
+LOCALHOST;PS;apache-httpd;ps -ef|grep httpd|grep -v grep|wc -l;4;1000;active;inactive;sudo /etc/init.d/httpd restart;;
+LOCALHOST;PS;mysql;ps -ef|grep mysql|grep -v grep|wc -l;1;1000;active;inactive;sudo /etc/init.d/mysqld restart;;
+LOCALHOST;PS;ftp;ps -ef|grep vsftpd|grep -v grep|wc -l;1;1000;active;inactive;sudo /etc/init.d/vsftpd restart;;
+LOCALHOST;PS;iptables;/etc/init.d/iptablesrestore status|grep OK|wc -l;1;1000;active;inactive;sudo /etc/init.d/iptablesrestore restart;;
+LOCALHOST;PS;gdrive;mount|grep gdrive|wc -l;1;1;mounted;not mounted;;;
